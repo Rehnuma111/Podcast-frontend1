@@ -36,11 +36,17 @@ const Signup = () => {
         })
             .then((res) => {
                 console.log(res.status);
-                if (res.status === 200) {
+                if (res.status === 201) {
                     Swal.fire({
                         icon: "success",
                         title: "Success",
                         text: "Registered Successfully",
+                    });
+                }else if(res.status===409){
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Email Already Exist",
                     });
                 }
                 return res.json();
