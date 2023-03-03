@@ -3,14 +3,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Loader from "./Loader";
+import app_config from "../config";
 
 const ManagePodcast = () => {
   const [loading, setLoading] = useState(true);
+  const url = app_config.api_url;
 
   const [podcastArray, setPodcastArray] = useState([]);
 
   const getDataFromBackend = async () => {
-    const response = await fetch("http://localhost:5000/podcast/getall");
+    const response = await fetch(url+"/podcast/getall");
     const data = await response.json();
     console.log(data);
     setPodcastArray(data);
@@ -21,7 +23,7 @@ const ManagePodcast = () => {
     const reOpt = {
       method: "DELETE",
     };
-    fetch("http://localhost:5000/podcast/delete/" + id, reOpt)
+    fetch(url+"/podcast/delete/" + id, reOpt)
       .then((res) => {
         if (res.status === 200) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -45,7 +47,7 @@ const ManagePodcast = () => {
           <td>
             <div className="d-flex align-items-center">
               <img
-                src={"http://localhost:5000/images/" + model.thumbnail}
+                src={url+"/images/" + model.thumbnail}
                 alt=""
                 style={{ width: 45, height: 45 }}
                 className="rounded-circle"
