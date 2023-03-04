@@ -2,15 +2,16 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import app_config from "../config";
 import Loader from './Loader';
 
 const ManageUser = () => {
-
+  const url = app_config.api_url;
     const [loading, setLoading] = useState(true)
     const [usersArray, setUsersArray] = useState([]);
 
     const getDataFromBackend = async () => {
-        const response = await fetch("http://localhost:5000/user/getall");
+        const response = await fetch(url+"/user/getall");
         const data = await response.json();
         console.log(data);
         setUsersArray(data);
@@ -21,7 +22,7 @@ const ManageUser = () => {
         const reOpt = {
           method: "DELETE",
         };
-        fetch("http://localhost:5000/user/delete/" + id, reOpt)
+        fetch(url+"/user/delete/" + id, reOpt)
           .then((res) => {
             if (res.status === 200) {
               Swal.fire("Deleted!", "Your data has been deleted.", "success");
