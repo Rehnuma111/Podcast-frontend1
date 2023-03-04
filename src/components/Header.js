@@ -29,8 +29,7 @@ const Header = () => {
           <button
             className="navbar-toggler"
             type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarButtonsExample"
+            data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -68,7 +67,7 @@ const Header = () => {
         </div>
         {/* Container wrapper */}
       </nav>
-      {/* Navbar */}
+      
     </>
   );
 };
