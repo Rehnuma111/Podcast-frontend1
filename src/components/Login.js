@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import app_config from "../config";
-import React from "react";
+import React, { useContext } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import sample from "./images/podcast2.png";
-
-
+import { AuthContext } from "../Context/userAuthContext";
 
 const Login = () => {
+  const { setIsAuthenticated} =
+  useContext(AuthContext);
 
   const [values, setValues] = React.useState({
     password: '',
@@ -34,6 +35,8 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+
 
   const url = app_config.api_url;
   const loginForm = {
@@ -60,8 +63,11 @@ const Login = () => {
             icon: "success",
             title: "Success",
             text: "You have loggedin successfully!",
-          }).then(() => {
+          })
+          res.json().then((data) => {
             navigate("/publish");
+            sessionStorage.setItem("user",JSON.stringify(data));
+            setIsAuthenticated(true)
           });
         } else if (res.status === 300) {
           Swal.fire({
