@@ -53,10 +53,13 @@ const Trending = () => {
           technology, education, sports, film, and many more. Listen to podcasts
           charting at the top!
         </p>
+        <div className="container">
+
         <Slider
           {...settings}
-          style={{ padding: "2rem", margin: "0 4rem 0 4rem" }}
+          style={{ padding: "2rem" }}
         >
+          
           <div>
             <img
               style={{ borderRadius: "10px" }}
@@ -130,6 +133,7 @@ const Trending = () => {
             />
           </div>
         </Slider>
+        </div>
         <div className="d-flex justify-content-center mt-5">
 
           <NavLink to="/podcasts">

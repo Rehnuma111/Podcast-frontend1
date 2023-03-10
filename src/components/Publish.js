@@ -88,18 +88,20 @@ const Publish = () => {
   };
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <div className=" card col-md-6  w-75 mt-3 mb-5 mx-auto "  >
-        <div className=" card-body p-5 " >
-          <h1 style={{ textAlign: "center" }}>Publish Your Podcast</h1>
+    <div  style={{ minHeight: "100vh" }}>
+      <div className=" card  col-md-6  w-75 mt-3 mb-5 mx-auto "  >
+        <div className="container">
+          
+        <div className=" card-body " >
+          <h3 style={{ textAlign: "center" }}>Publish Your Podcast</h3>
           <hr />
           <Formik initialValues={podcastform} onSubmit={formSubmit}>
             {({ values, handleChange, handleSubmit, isSubmitting }) => (
               <form onSubmit={handleSubmit}>
-                <h1 className="form-label mt-3 ">Title</h1>
+                <h3 className="form-label mt-3 ">Title</h3>
                 <input
                   placeholder="Title"
-                  className="form-control p-3 "
+                  className="form-control  "
                   onChange={handleChange}
                   value={values.title}
                   id="title"
@@ -107,20 +109,20 @@ const Publish = () => {
                 />
 
                 <div class="mb-3">
-                  <h1 className="form-label h-13 mt-3">Description</h1>
-                  <textarea className="form-control p-4" placeholder="Description" onChange={handleChange} value={values.description}
+                  <h3 className="form-label h-13 mt-3">Description</h3>
+                  <textarea className="form-control" placeholder="Description" onChange={handleChange} value={values.description}
                     id="description" rows="3"></textarea>
                 </div>
 
-                <h1 className="form-label mt-3">Upload Thumbnail</h1>
+                <h3 className="form-label mt-3">Upload Thumbnail</h3>
                 <input
                   type="file"
-                  className="form-control p-3"
+                  className="form-control"
                   onChange={uploadThumbnail}
                   required
 
                 />
-                <h1 className="form-label mt-3">Upload File</h1>
+                <h3 className="form-label mt-3">Upload File</h3>
 
                 <input
                   type="file"
@@ -134,6 +136,7 @@ const Publish = () => {
               </form>
             )}
           </Formik>
+        </div>
         </div>
       </div>
     </div>
